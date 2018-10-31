@@ -1,36 +1,23 @@
 import React from 'react';
+import CartItem from './CartItem';
 
 class CartItems extends React.Component{
 
   render() {
-    console.log(this.props.list)
     return (
-      <div className="container">
-        <h1>Items</h1>
-        <div class="collection-item">
-        <div class="row">
-        <div class="col-md-8">Mediocre Iron Watch</div>
-        <div class="col-md-2">$3.99</div>
-        <div class="col-md-2">1</div>
+    <div className="container">
+      <h1>Cart Items</h1>
+      <div className="list-group">
+        <div className="list-group-item">
+          <div className="row">
+            <div className="col-md-8">Product</div>
+            <div className="col-md-2">Price</div>
+            <div className="col-md-2">Quantity</div>
+          </div>
         </div>
+        <CartItem name = {'Watch'} Price = {'3.99'} Quantity = {2}  />
       </div>
-      <div class="collection-item">
-        <div class="row">
-          <div class="col-md-8">Heavy Duty Concrete Plate</div>
-          <div class="col-md-2">$4.99</div>
-          <div class="col-md-2">2</div>
-        </div>
-      </div>
-      <div class="collection-item">
-        <div class="row">
-          <div class="col-md-8">Intelligent Paper Knife</div>
-          <div class="col-md-2">$19.99</div>
-          <div class="col-md-2">1</div>
-        </div>
-      </div>
-
-
-      </div>
+    </div>
     )
   }
 }
