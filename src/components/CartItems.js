@@ -1,9 +1,8 @@
 import React from 'react';
 import CartItem from './CartItem';
 
-class CartItems extends React.Component{
+const CartItems = (props) => {
 
-  render() {
     return (
     <div className="container">
       <h1>Cart Items</h1>
@@ -15,11 +14,10 @@ class CartItems extends React.Component{
             <div className="col-md-2">Quantity</div>
           </div>
         </div>
-        <CartItem name = {'Watch'} Price = {'3.99'} Quantity = {2}  />
+        <CartItem products = {props.products} />
       </div>
     </div>
     )
-  }
-}
+  };
 
 export default CartItems;

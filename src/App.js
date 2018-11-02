@@ -45,13 +45,28 @@ class App extends Component {
     });
   };
 
+  SubmitItems = e => {
+    e.preventDefault();
+    const newObj = {
+    quantity: this.state.quantity,
+    name: this.state.products.name
+
+
+    // ...this.state.selectedProduct
+  };
+  console.log(newObj)
+  this.setState({
+    cartItemsList: [...this.state.products, newObj]
+  });
+};
+
   render() {
     return (
         <div>
           <CartHeader />
-          <CartItems list= {this.state.cartItemsList} />
+          <CartItems products  = {this.state.products} />
+          <AddItem products  = {this.state.products} changeQuantity = {this.changeQuantity} grabThis = {this.grabThis} submit = {this.SubmitItems}  />
           <CartFooter year = {this.state.copyRightYear} />
-          <AddItem products  = {this.state.products} changeQuantity = {this.changeQuantity} grabThis = {this.grabThis}  />
         </div>
     );
   }
