@@ -1,24 +1,17 @@
 import React from 'react';
 
-const CartItem = (props) => {
-
-    var items= props.products.map(item => {
+class CartItem extends React.Component {
+  render() {
       return(
       <div className="list-group-item">
         <div className="row">
-          <div className="col-md-8">{props.name}</div>
-          <div className="col-md-2">{props.price}</div>
-          <div className="col-md-2">{props.quantity}</div>
+          <div className="col-md-8"/>
+          <div className="col-md-2"/>
+          <div className="col-md-2"/>
         </div>
       </div>
-
-      )
-    })
-return (
-  <div className="collection-item">
-    { items }
-  </div>
-)
+    );
+  }
 }
 
 

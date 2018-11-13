@@ -9,9 +9,12 @@ class AddItem extends React.Component{
            </option>
          );
        });
-       console.log(this.props.changeQuantity)
     return (
      <div>
+      <div className="grandtotal">
+        <h2>Grand Total: </h2>
+        <h2>${(this.props.total / 100).toFixed(2)}</h2>
+      </div>
        <form>
          <h2>Quantity</h2>
          <input

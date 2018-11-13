@@ -5,18 +5,13 @@ import CartHeader from './components/CartHeader';
 import CartFooter from './components/CartFooter';
 import CartItems from './components/CartItems';
 import AddItem from './components/AddItem';
+// import CartItem from './Components/CartItem';
 
 class App extends Component {
+
   constructor() {
     super();
-    this.state = {
-      copyRightYear: 2018,
-      cartItemsList: [
-        { id: 1, product: { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 }, quantity: 1 },
-        { id: 2, product: { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 }, quantity: 2 },
-        { id: 3, product: { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 }, quantity: 1 },
-      ],
-      products:[
+    const products = [
         { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 },
         { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 },
         { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 },
@@ -26,8 +21,18 @@ class App extends Component {
         { id: 46, name: 'Intelligent Leather Clock', priceInCents: 2999 },
         { id: 47, name: 'Ergonomic Bronze Lamp', priceInCents: 40000 },
         { id: 48, name: 'Awesome Leather Shoes', priceInCents: 3990 },
-      ],
-    }
+      ];
+
+    this.state = {
+      copyRightYear: 2018,
+      quantity: 0,
+      cart: [],
+      selectedProduct: null,
+      name: "",
+      products: products,
+      price: 0,
+      totalPrice: 0
+    };
   }
 
   grabThis = e => {
@@ -39,7 +44,6 @@ class App extends Component {
    };
 
   changeQuantity = e => {
-    console.log('change')
     this.setState({
     quantity: e
     });
@@ -49,23 +53,22 @@ class App extends Component {
     e.preventDefault();
     const newObj = {
     quantity: this.state.quantity,
-    name: this.state.products.name
-
-
-    // ...this.state.selectedProduct
-  };
-  console.log(newObj)
-  this.setState({
-    cartItemsList: [...this.state.products, newObj]
-  });
-};
+    ...this.state.selectedProduct
+    };
+    this.setState({
+      cart: [...this.state.cart,newObj],
+      totalPrice:
+        this.state.totalPrice +
+        this.state.quantity * this.state.selectedProduct.priceInCents
+    });
+ };
 
   render() {
     return (
         <div>
           <CartHeader />
-          <CartItems products  = {this.state.products} />
-          <AddItem products  = {this.state.products} changeQuantity = {this.changeQuantity} grabThis = {this.grabThis} submit = {this.SubmitItems}  />
+          <CartItems products = {this.state.products} cart = {this.state.cart} quantity = {this.state.quantity}/>
+          <AddItem products = {this.state.products} changeQuantity = {this.changeQuantity} grabThis = {this.grabThis} submit = {this.SubmitItems} total = {this.state.totalPrice} />
           <CartFooter year = {this.state.copyRightYear} />
         </div>
     );
