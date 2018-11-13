@@ -5,7 +5,6 @@ import CartHeader from './components/CartHeader';
 import CartFooter from './components/CartFooter';
 import CartItems from './components/CartItems';
 import AddItem from './components/AddItem';
-// import CartItem from './Components/CartItem';
 
 class App extends Component {
 
